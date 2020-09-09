@@ -1,31 +1,36 @@
 class ContactsController < ApplicationController
-    
+
     def new
-    
-      @contact = Contact.new
-    
+
+  @contact = Contact.new
+
     end
+def create
 
-    def create
+  @contact = Contact.new(contact_params)
 
-      @contact = Contact.new(contact_params)
+  if @contact.save
 
-      if @contact.save
-         redirect_to new_contact_path, notice: "Message sent."
+     flash[:success] = "Message sent."
 
-      else
-         redirect_to new_contact_path, notice: "Error occured."
+     redirect_to new_contact_path
 
-      end
-      
-    end
+  else
 
-    private
+     flash[:error] = @contact.errors.full_messages.join(", ")
 
-      def contact_params
+     redirect_to new_contact_path
 
-         params.require(:contact).permit(:name, :email, :comments)
+  end
 
-      end
-    
+end
+
+private
+
+  def contact_params
+
+     params.require(:contact).permit(:name, :email, :comments)
+
+  end
+
 end
