@@ -19,6 +19,9 @@ Devise.setup do |config|
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
+  
+  #THIS WAS ADDED AFTER REFERENCING STACKOVERFLOW https://stackoverflow.com/questions/33560898/rails-4-devise-rails-api-undefined-method-flash
+  
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
